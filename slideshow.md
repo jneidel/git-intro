@@ -20,6 +20,7 @@ Online at: jneidel.com/git
 # Prerequisites
 
 - git
+- VS Code
 - GitHub account
 
 ---
@@ -53,7 +54,8 @@ Concretely this means:
 **Open starter files in terminal:**
 
 ```zsh
-$ cd ~/Desktop/git-starter (cd...change directory)
+$ cd ~/Desktop/git-starter # unix (cd...change directory)
+$ cd Desktop/git-starter   # windows
 
 $ ls  # unix (ls..list directory contents)
 $ dir # windows
@@ -119,10 +121,10 @@ Takes any fuzzy search:
 ```zsh
 $ git add index.html
 $ git add *.html
-$ git add index.*
+$ git add test/**/*.test.js
 ```
 
-Or multiple:
+Or multiple files/directories:
 
 ```zsh
 $ git add index.html style.css
@@ -138,26 +140,25 @@ Apply changes
 $ git commit -m "Initial commit"
 ```
 
-## Commit message
+---
 
-Commits should be atomic, only include a distinct change:
+# Commit message
 
-Good:
+- Commits should be atomic, only include a distinct change:
 
-- "Change background color"
-- "Update options section in readme"
-- "Add webpack config"
+    Good:
+    - "Change background color"
+    - "Update options section in readme"
+    - "Add webpack config"
 
-Bad:
+    Bad:
+    - "Add changes" - Too unspecific
+    - "Change color, add header, refactor tests" - Too much content, split up in different commits
 
-- "Add changes" - Too unspecific
-- "Change color, add header, refactor tests" - Too much content, split up in different commits
+- Commits should be sound like this: If applied this commit will <commit-message>.
+    For example: If applied this commit will "Change [the] background color".
 
-Commits should be sound like this: If applied this commit will <commit-message>.
-
-For example: If applied this commit will "Change [the] background color".
-
-Commits should be capitalized followed be only lower case words (function names, etc. are exceptions)
+- Commits should be capitalized followed be only lower case words (function names, etc. are exceptions)
 
 ---
 
@@ -176,7 +177,7 @@ Or in words: `push` current changes to the branch `master` of the remote reposit
 # GitHub Pages
 
 - Open your github repository
-- Click on the settins tab
+- Click on the settings tab
 - Scroll down to 'GitHub Pages'
 - In the dropdown: choose 'master branch' as source, click 'Save'
 - Scroll down again
@@ -190,7 +191,9 @@ Once github pages has built the site, append an `/index.html` to the url. (eg: h
 
 # Feature branches
 
-If working with multiple people you don't want everybody to commit to master. This would lead to a lot of different versions of the same files, which would be hard to merge back together. To avoid this one will create a feature branch before starting to work.
+If working with multiple people you don't want everybody to commit to master.
+This would lead to a lot of different versions of the same files, which would be hard to merge back together.
+To avoid this one will create a feature branch before starting to work.
 
 ```zsh
 $ git checkout -b change-color
@@ -232,5 +235,42 @@ Before merging a pull request, let somebody from your team do a code review. In 
 
 ---
 
+# git reset
+
+Unstages added files
+
+```zsh
+$ git reset
+```
+
+---
+
+# git log
+
+Prints the history of commits
+
+```zsh
+$ git log --oneline --graph
+```
+
+---
+
+# .gitignore
+
+In the `.gitignore` file you list files/directories to be ignored by git.
+
+---
+
+# readme.md
+
+Describe the project for people visiting the repo.
+
+---
+
+# git diff
+
+---
+
 # Merge conflicts
+
 
