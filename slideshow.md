@@ -14,12 +14,13 @@ Online at: jneidel.com/git
 - Editing files with git
 - Publish a website via github pages
 - Collaborative workflow
+- Useful commands, files
 
 ---
 
 # Prerequisites
 
-- git
+- git (check using `git --version`)
 - VS Code
 - GitHub account
 
@@ -38,41 +39,56 @@ Concretely this means:
 
 ---
 
-# Starter files
+# Get starter files
 
-**Get files:**
+Get files:
 
-- Download starter files jneidel.com/git-starter.zip
-- Unzip using WinRar, 7zip, etc.
+- Download starter files: jneidel.com/git-starter.zip
+- Unzip
 - Move unpacked folder to desktop
 
-**Open terminal:**
+Open in VS Code:
+
+![](img/open-folder.png)
+
+---
+
+# Open starter files in terminal
+
+Open terminal:
 
 - Mac/Linux: Search applications for 'terminal'
 - Windows:   Search applications for 'cmd'
 
-**Open starter files in terminal:**
-
+Open in terminal (Unix):
 ```zsh
-$ cd ~/Desktop/git-starter # unix (cd...change directory)
-$ cd Desktop/git-starter   # windows
+$ cd ~/Desktop/git-starter
 
-$ ls  # unix (ls..list directory contents)
-$ dir # windows
-
-You should see:
-index.html
-style.css
+$ ls
 ```
+
+Open in cmd (Windows):
+```zsh
+$ cd Desktop/git-starter
+
+$ dir
+```
+
+You should see something like this:
+![](img/ls.png)
 
 ---
 
 # Create github repo
 
-- Click the plus in the navigation bar -> 'New repository' or go to github.com/new
-- Set name, click 'Create repository'
-- Click green 'Clone or download' button to the right
-- Copy the given url (for example: https://github.com/jneidel/test.git)
+![](img/new-repo.png)
+
+![](img/repo-name.png)
+
+![](img/create-repo.png)
+
+- Copy the repo link:
+![](img/clone.png)
 
 ---
 
@@ -144,7 +160,10 @@ $ git commit -m "Initial commit"
 
 # Commit message
 
-- Commits should be atomic, only include a distinct change:
+- Commits should be sound like this: If applied this commit will <commit-message>.
+    For example: If applied this commit will "Change [the] background color".
+
+- Commits should be atomic, only include one distinct change:
 
     Good:
     - "Change background color"
@@ -155,16 +174,13 @@ $ git commit -m "Initial commit"
     - "Add changes" - Too unspecific
     - "Change color, add header, refactor tests" - Too much content, split up in different commits
 
-- Commits should be sound like this: If applied this commit will <commit-message>.
-    For example: If applied this commit will "Change [the] background color".
-
-- Commits should be capitalized followed be only lower case words (function names, etc. are exceptions)
+- Commits should be capitalized followed only lowercase (exception: funcName)
 
 ---
 
 # git push
 
-Synchronize local version of the repo with github.
+Synchronize github repo with local one.
 
 ```zsh
 $ git push origin master
@@ -174,18 +190,31 @@ Or in words: `push` current changes to the branch `master` of the remote reposit
 
 ---
 
+# git pull
+
+Synchronize local repo with github one.
+
+```zsh
+$ git pull origin master
+```
+
+Or in words: `pull` current changes on the `master` branch of the remote repository `origin`.
+
+---
+
 # GitHub Pages
 
-- Open your github repository
-- Click on the settings tab
+Publish your static site
+
+![](img/settings.png)
+
 - Scroll down to 'GitHub Pages'
-- In the dropdown: choose 'master branch' as source, click 'Save'
-- Scroll down again
-- Open the link that is now available (eg: https://jneidel.github.io/test/)
+
+![](img/pages-src.png)
+
+![](img/ready-to-pub.png)
 
 This is where your project will be published.
-
-Once github pages has built the site, append an `/index.html` to the url. (eg: https://jneidel.github.io/test/index.html)
 
 ---
 
@@ -196,10 +225,31 @@ This would lead to a lot of different versions of the same files, which would be
 To avoid this one will create a feature branch before starting to work.
 
 ```zsh
-$ git checkout -b change-color
+$ git checkout -b change-name
 ```
 
-Make changes to files and push to github.
+Make changes to files and push to the github branch `change-name`
+
+---
+
+# Github pull request
+
+To merge your changes on the feature branch back into `master` open a pull request on github.
+
+![](img/branches.png)
+
+![](img/your-branches.png)
+
+![](img/base-master.png)
+
+- Describe changes
+- 'Create pull request'
+
+Before merging a pull request, let somebody from your team do a code review.
+In your code review you step through the changes together to catch any flaws.
+
+After merging the website will be updated.
+To get the changes on your local master branch, use `git pull`.
 
 ---
 
@@ -215,32 +265,82 @@ To delete the feature branch, first go back to the master branch:
 
 ```zsh
 $ git checkout master
-$ git branch -d change-color
+$ git branch -d change-name
 ```
 
 ---
 
-# Github pull request
+# Merge conflicts
 
-To merge your changes on the feature branch back into `master` open a pull request on github.
-
-- Open repo on github
-- Click on branches tab
-- Click on 'New pull request' button next to feature branch
-- Make sure `master` is the base branch
-- Describe changes
-- 'Create pull request'
-
-Before merging a pull request, let somebody from your team do a code review. In your code review you step through the changes together to catch any flaws.
+Merge conflicts occur if two branches are merged and different commits changed the same lines of code in the same file.
 
 ---
 
-# git reset
+# Produce merge conflict
 
-Unstages added files
+Create a new branch `change-color` and change the background color in `style.css`.
+Then change the same color on the master branch, and push that change to github.
+Then pull the current master branch from github into the `change-color` branch.
+This will result in a merge conflict, which can be best resolved in VS Code.
+
+Current change specifies the state on your branch.
+
+Incoming change specifies the state on the branch your want to merge into your branch.
+
+---
+
+# Setup your code+design project
+
+To have all your different repos (eg: mobile app, web app, design files) in one central place, create a github organization for your team.
+
+![](img/new-orga.png)
+
+![](img/orga-name.png)
+Naming Scheme: code-design-camp-<camp-id>-<team-name>
+Example:       code-design-camp-1802-elocktronics
+
+## Github tags
+
+![](img/topics.png)
+
+Add the `code-design-camp` tag to your repos.
+
+---
+
+# .gitignore
+
+In the `.gitignore` file you list files/directories to be ignored by git.
+
+In `.gitignore`:
+
+```
+todo.md
+node_modules
+package-lock.json
+```
+
+---
+
+# readme.md
+
+Describe the project for people visiting the repo, as this file will be automatically open on github.
+
+In `readme.md`:
+
+```md
+# <repo-name> // Headline, h1 in html
+
+Describe your project here
+```
+
+---
+
+# git diff
+
+View unstaged changes to given file(s)
 
 ```zsh
-$ git reset
+$ git diff index.html
 ```
 
 ---
@@ -255,22 +355,63 @@ $ git log --oneline --graph
 
 ---
 
-# .gitignore
+# git reset
 
-In the `.gitignore` file you list files/directories to be ignored by git.
+Unstages added files
 
----
-
-# readme.md
-
-Describe the project for people visiting the repo.
+```zsh
+$ git reset
+```
 
 ---
 
-# git diff
+# git reset --hard
+
+Reset repo to given commit id
+
+Get the id of the commit you want to reset to via `git log`.
+
+```zsh
+$ git reset --hard a3a14c8
+```
+
+The history of the remote origin differs from your local now, to overwrite the remote use the `--force` flag:
+
+```zsh
+$ git push -f origin master
+```
 
 ---
 
-# Merge conflicts
+# git reflog
 
+Prints log of changes
+
+```zsh
+$ git reflog
+```
+
+To reset the change just made via `git reset --hard`, or to roll back before a specific action use `HEAD@{x}` from `reflog`.
+
+```zsh
+$ git reset --hard HEAD@{2}
+```
+
+Only play around with these reset commands on a branch that ONLY you are using.
+
+---
+
+# git commit --amend
+
+Edits the last commit with the currently staged changes.
+
+```zsh
+$ git commit --amend
+```
+
+Will open the commit message in vim, for editing (escape vim with `Esc :q!`), to skip the edit pass the `--no-edit` flag.
+
+```zsh
+$ git commit --amend --no-edit
+```
 
