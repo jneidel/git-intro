@@ -289,24 +289,6 @@ Incoming change specifies the state on the branch your want to merge into your b
 
 ---
 
-# Setup your code+design project
-
-To have all your different repos (eg: mobile app, web app, design files) in one central place, create a github organization for your team.
-
-![](img/new-orga.png)
-
-![](img/orga-name.png)
-Naming Scheme: code-design-camp-<camp-id>-<team-name>
-Example:       code-design-camp-1802-elocktronics
-
-## Github tags
-
-![](img/topics.png)
-
-Add the `code-design-camp` tag to your repos.
-
----
-
 # .gitignore
 
 In the `.gitignore` file you list files/directories to be ignored by git.
