@@ -10,7 +10,7 @@ Online at: jneidel.com/git
 # What we will cover
 
 - What is git?
-- Creating a github repo
+- Creating a git(hub) repo
 - Editing files with git
 - Publish a website via github pages
 - Collaborative workflow
@@ -276,7 +276,7 @@ Merge conflicts occur if two branches are merged and different commits changed t
 
 ---
 
-# Produce merge conflict
+# Produce a merge conflict
 
 Create a new branch `change-color` and change the background color in `style.css`.
 Then change the same color on the master branch, and push that change to github.
