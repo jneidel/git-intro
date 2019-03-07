@@ -11,3 +11,6 @@
 
 This slide show has been created as a workshop for the [Code+Design Camp](https://github.com/CodeDesignInitiative).
 
+## Commit Messages
+
+For a good article on commit messages [see](https://chris.beams.io/posts/git-commit).
