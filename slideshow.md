@@ -94,7 +94,7 @@ You should see something like this:
 
 # git init
 
-After creating the repo on github also create a local git repo.
+After creating the repo on github also create a local git repo in the git-starter directory:
 
 ```zsh
 $ git init
@@ -104,10 +104,10 @@ $ git init
 
 # git remote
 
-Add github repo to local one
+Add github repo to local one:
 
 ```zsh
-$ git remote add origin <your-repo-link>
+$ git remote add origin <github-repo-link>
 ```
 
 `origin` is the conventional name for your upstream repo.
@@ -116,7 +116,7 @@ $ git remote add origin <your-repo-link>
 
 # git status
 
-See if files have been changed, whenever they are staged
+See if files have been changed, whenever they are staged:
 
 ```zsh
 $ git status
@@ -132,7 +132,7 @@ Stage files for commit
 $ git add *
 ```
 
-Takes any fuzzy search:
+Takes any glob:
 
 ```zsh
 $ git add index.html
@@ -150,7 +150,7 @@ $ git add index.html style.css
 
 # git commit
 
-Apply changes
+Apply changes:
 
 ```zsh
 $ git commit -m "Initial commit"
@@ -160,7 +160,7 @@ $ git commit -m "Initial commit"
 
 # Commit message
 
-- Commits should be sound like this: If applied this commit will <commit-message>.
+- Commits messages should sound like this: If applied this commit will <commit-message>.
     For example: If applied this commit will "Change [the] background color".
 
 - Commits should be atomic, only include one distinct change:
@@ -174,13 +174,15 @@ $ git commit -m "Initial commit"
     - "Add changes" - Too unspecific
     - "Change color, add header, refactor tests" - Too much content, split up in different commits
 
-- Commits should be capitalized followed only lowercase (exception: funcName)
+- Commits should be capitalized followed only lowercase
+
+- See [this article](https://chris.beams.io/posts/git-commit) for more info.
 
 ---
 
 # git push
 
-Synchronize github repo with local one.
+Synchronize your local repo with the one on github:
 
 ```zsh
 $ git push origin master
@@ -192,7 +194,7 @@ Or in words: `push` current changes to the branch `master` of the remote reposit
 
 # git pull
 
-Synchronize local repo with github one.
+Synchronize local repo with changes from github:
 
 ```zsh
 $ git pull origin master
@@ -204,7 +206,7 @@ Or in words: `pull` current changes on the `master` branch of the remote reposit
 
 # GitHub Pages
 
-Publish your static site
+Publish your static site:
 
 ![](img/settings.png)
 
@@ -272,26 +274,27 @@ $ git branch -d change-name
 
 # Merge conflicts
 
-Merge conflicts occur if two branches are merged and different commits changed the same lines of code in the same file.
+Merge conflicts occur when two people (on different branches) edit the same files and both try to merge them back into master.
 
 ---
 
 # Produce a merge conflict
 
-Create a new branch `change-color` and change the background color in `style.css`.
-Then change the same color on the master branch, and push that change to github.
-Then pull the current master branch from github into the `change-color` branch.
+- Create a new branch `change-color` and change the background color in `style.css`.
+- Change the same color on the master branch, and push that change to github.
+- Pull the current master branch from github into the `change-color` branch.
+
 This will result in a merge conflict, which can be best resolved in VS Code.
 
-Current change specifies the state on your branch.
+Current change specifies the state of your current branch.
 
-Incoming change specifies the state on the branch your want to merge into your branch.
+Incoming change specifies the state on the branch you want to merge into your branch.
 
 ---
 
 # .gitignore
 
-In the `.gitignore` file you list files/directories to be ignored by git.
+In the `.gitignore` file you list files/directories to be ignored by git (don't show up in status, etc.).
 
 In `.gitignore`:
 
@@ -319,7 +322,7 @@ Describe your project here
 
 # git diff
 
-View unstaged changes to given file(s)
+View unstaged changes of file(s):
 
 ```zsh
 $ git diff index.html
@@ -329,7 +332,7 @@ $ git diff index.html
 
 # git log
 
-Prints the history of commits
+Prints the history of commits:
 
 ```zsh
 $ git log --oneline --graph
@@ -339,7 +342,7 @@ $ git log --oneline --graph
 
 # git reset
 
-Unstages added files
+Unstages added files:
 
 ```zsh
 $ git reset
@@ -349,7 +352,7 @@ $ git reset
 
 # git reset --hard
 
-Reset repo to given commit id
+Reset repo to a given commit id.
 
 Get the id of the commit you want to reset to via `git log`.
 
@@ -357,7 +360,7 @@ Get the id of the commit you want to reset to via `git log`.
 $ git reset --hard a3a14c8
 ```
 
-The history of the remote origin differs from your local now, to overwrite the remote use the `--force` flag:
+The history of the remote origin differs from your local now, to overwrite the remote one use the `--force` flag:
 
 ```zsh
 $ git push -f origin master
@@ -373,7 +376,7 @@ Prints log of changes
 $ git reflog
 ```
 
-To reset the change just made via `git reset --hard`, or to roll back before a specific action use `HEAD@{x}` from `reflog`.
+To reset the change just made via `git reset --hard`, or to roll back before a specific action use `HEAD@{n}` from `reflog`.
 
 ```zsh
 $ git reset --hard HEAD@{2}
@@ -385,7 +388,7 @@ Only play around with these reset commands on a branch that ONLY you are using.
 
 # git commit --amend
 
-Edits the last commit with the currently staged changes.
+Edit the last commit with the currently staged changes.
 
 ```zsh
 $ git commit --amend
