@@ -43,7 +43,7 @@ Concretely this means:
 
 Get files:
 
-- Download starter files: jneidel.com/git-starter.zip
+- Download starter files: github.com/jneidel/git-intro/raw/master/git-starter.zip
 - Unzip
 - Move unpacked folder to desktop
 
