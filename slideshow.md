@@ -3,7 +3,7 @@
 
 By Jonathan Neidel @jneidel
 
-Online at: jneidel.com/git
+Online at: github.com/jneidel/git-intro
 
 ---
 
